@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:shopingapp/models/card_banners.dart';
 import 'package:shopingapp/models/card_categories.dart';
 import 'package:shopingapp/utils/custom_functions.dart';
 import 'package:shopingapp/utils/widget_functions.dart';
-
+import 'package:shopingapp/views/HomePage/Widgets/home_infochips.dart';
+import 'package:shopingapp/views/HomePage/Widgets/home_recipecard.dart';
 import 'Widgets/home_banners.dart';
 
 class HomePage extends StatelessWidget {
@@ -111,7 +111,7 @@ class HomePage extends StatelessWidget {
                 padding: sidePadding,
                 child: Text('Categories',
                     style: customText(
-                        Colors.black54, FontWeight.bold, size.width / 25)),
+                        Colors.black, FontWeight.bold, size.width / 25)),
               ),
               addVerticalSpace(size.height / 70),
               Container(
@@ -165,44 +165,19 @@ class HomePage extends StatelessWidget {
               ),
               addVerticalSpace(size.height / 40),
               HomeBanners(),
-              addVerticalSpace(size.height / 30),
+              addVerticalSpace(size.height / 40),
               Container(
+                padding: EdgeInsets.only(left: size.width / padding),
+                height: size.height / 10,
+                child: InfoChip(),
+              ),
+              Padding(
                 padding: sidePadding,
-                child: Text('Food Recipes For You,',
+                child: Text('Popular Recipes',
                     style: customText(
-                        Colors.black54, FontWeight.bold, size.width / 25)),
+                        Colors.black, FontWeight.bold, size.width / 22)),
               ),
-              addVerticalSpace(size.height / 70),
-              Container(
-                child: Column(
-                  children: [
-                    ListTile(
-                      leading: CircleAvatar(
-                        radius: size.width / 15,
-                        backgroundImage: AssetImage(
-                          CommonFun.getImgRelativePath('food1.jpg'),
-                        ),
-                        child: GestureDetector(onTap: () {}),
-                      ),
-                      title: Text('Two-line ListTile'),
-                      subtitle: Text('Here is a second line'),
-                      trailing: Icon(Icons.more_vert),
-                    ),
-                    ListTile(
-                      leading: CircleAvatar(
-                        radius: size.width / 15,
-                        backgroundImage: AssetImage(
-                          CommonFun.getImgRelativePath('food1.jpg'),
-                        ),
-                        child: GestureDetector(onTap: () {}),
-                      ),
-                      title: Text('Two-line ListTile'),
-                      subtitle: Text('Here is a second line'),
-                      trailing: Icon(Icons.more_vert),
-                    ),
-                  ],
-                ),
-              ),
+              RecipeCard(),
             ],
           ),
         ),

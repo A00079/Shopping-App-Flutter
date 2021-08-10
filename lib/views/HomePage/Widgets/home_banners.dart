@@ -56,7 +56,7 @@ class HomeBanners extends StatelessWidget {
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text('Super Burger', style: themeData.textTheme.headline4),
+                  Text('Super Burger', style: themeData.textTheme.headline5),
                   Text('Colarado, San Francisco',
                       style: themeData.textTheme.bodyText2),
                   addVerticalSpace(size.height / 150),
