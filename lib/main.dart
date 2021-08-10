@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:shopingapp/utils/constants.dart';
-import 'package:shopingapp/views/LandingPage/landing_page.dart';
+import 'package:shopingapp/views/HomePage/home_page.dart';
 import 'dart:ui';
 import 'package:get/get.dart';
 
@@ -23,7 +23,7 @@ class MyApp extends StatelessWidget {
           accentColor: COLOR_DARK_BLUE,
           textTheme: screenWidth < 500 ? TEXT_THEME_SMALL : TEXT_THEME_DEFAULT,
           fontFamily: "Montserrat"),
-      home: LandingPage(),
+      home: HomePage(),
     );
   }
 }
