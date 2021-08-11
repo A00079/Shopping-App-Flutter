@@ -7,8 +7,11 @@ import 'package:get/get.dart';
 
 void main() {
   runApp(MyApp());
-  SystemChrome.setSystemUIOverlayStyle(
-      SystemUiOverlayStyle(statusBarColor: Colors.white));
+  SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.dark.copyWith(
+      statusBarColor: Colors.white, // Color for Android
+      statusBarBrightness:
+          Brightness.dark // Dark == white status bar -- for IOS.
+      ));
 }
 
 class MyApp extends StatelessWidget {

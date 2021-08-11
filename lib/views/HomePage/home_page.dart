@@ -1,19 +1,25 @@
 import 'package:flutter/material.dart';
-import 'package:shopingapp/models/card_categories.dart';
+import 'package:shopingapp/views/HomePage/Widgets/card_categories.dart';
 import 'package:shopingapp/utils/custom_functions.dart';
 import 'package:shopingapp/utils/widget_functions.dart';
+import 'package:shopingapp/views/HomePage/Widgets/card_food.dart';
 import 'package:shopingapp/views/HomePage/Widgets/home_infochips.dart';
-import 'package:shopingapp/views/HomePage/Widgets/home_recipecard.dart';
 import 'Widgets/home_banners.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
 
   @override
+  _HomePageState createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  @override
   Widget build(BuildContext context) {
+    int _selectedIndex = 0;
     final Size size = MediaQuery.of(context).size;
     final ThemeData themeData = Theme.of(context);
-    double padding = 25;
+    double padding = size.width / 15;
     final sidePadding = EdgeInsets.symmetric(horizontal: padding);
     return Scaffold(
       body: SafeArea(
@@ -33,8 +39,8 @@ class HomePage extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Container(
-                          width: size.width / 10,
-                          height: size.height / 20,
+                          width: size.width / 13,
+                          height: size.width / 13,
                           padding: EdgeInsets.all(4.0),
                           decoration: BoxDecoration(
                             image: DecorationImage(
@@ -114,70 +120,36 @@ class HomePage extends StatelessWidget {
                         Colors.black, FontWeight.bold, size.width / 25)),
               ),
               addVerticalSpace(size.height / 70),
-              Container(
-                padding: EdgeInsets.only(left: size.width / 42),
-                height: size.height / 8,
-                child: ListView.builder(
-                  scrollDirection: Axis.horizontal,
-                  padding: EdgeInsets.only(left: 16, right: 6),
-                  itemCount: cardcategories.length,
-                  itemBuilder: (context, index) {
-                    return Column(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        Expanded(
-                          child: Container(
-                            margin: EdgeInsets.only(right: 10),
-                            height: size.height / 8,
-                            width: size.width / 5,
-                            decoration: BoxDecoration(
-                              border: Border.all(
-                                  color: Colors.grey.shade300, width: 1),
-                              borderRadius: BorderRadius.circular(15),
-                              boxShadow: [
-                                BoxShadow(
-                                  color: Colors.black12,
-                                  blurRadius: 1.0,
-                                  spreadRadius: 0.1,
-                                  offset: Offset(0, 1.0),
-                                ),
-                              ],
-                              color:
-                                  Color(cardcategories[index].cardBackground),
-                            ),
-                            child: Center(
-                              child: Icon(
-                                cardcategories[index].iconname,
-                                color: Colors.black54,
-                                size: size.width / 13,
-                              ),
-                            ),
-                          ),
-                        ),
-                        addVerticalSpace(size.height / 120),
-                        Text(cardcategories[index].label,
-                            style: customText(Colors.grey.shade600,
-                                FontWeight.w700, size.width / 33)),
-                      ],
-                    );
-                  },
-                ),
-              ),
+              CardCategories(),
               addVerticalSpace(size.height / 40),
               HomeBanners(),
-              addVerticalSpace(size.height / 40),
-              Container(
-                padding: EdgeInsets.only(left: size.width / padding),
-                height: size.height / 10,
-                child: InfoChip(),
-              ),
+              addVerticalSpace(size.height / 30),
               Padding(
                 padding: sidePadding,
-                child: Text('Popular Recipes',
-                    style: customText(
-                        Colors.black, FontWeight.bold, size.width / 22)),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text('Delicious Food',
+                        style: customText(
+                            Colors.black, FontWeight.bold, size.width / 22)),
+                    Text('We make fresh and healthy food',
+                        style: customText(
+                            Colors.grey, FontWeight.bold, size.width / 32, 1)),
+                    addVerticalSpace(size.height / 60),
+                  ],
+                ),
               ),
-              RecipeCard(),
+              Container(
+                padding: EdgeInsets.only(left: size.width / padding),
+                height: size.height / 16,
+                child: InfoChip(),
+              ),
+              addVerticalSpace(size.height / 20),
+              Container(
+                padding: EdgeInsets.only(left: size.width / padding),
+                height: size.height / 3,
+                child: CardFoodItems(),
+              ),
             ],
           ),
         ),

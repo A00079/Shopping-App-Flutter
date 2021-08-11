@@ -1,7 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:shopingapp/models/card_banners.dart';
-import 'package:shopingapp/models/card_categories.dart';
 import 'package:shopingapp/utils/constants.dart';
 import 'package:shopingapp/utils/custom_functions.dart';
 import 'package:shopingapp/utils/widget_functions.dart';
@@ -13,11 +12,11 @@ class HomeBanners extends StatelessWidget {
   Widget build(BuildContext context) {
     final Size size = MediaQuery.of(context).size;
     final ThemeData themeData = Theme.of(context);
-    double padding = 25;
+    double padding = size.width / 15;
     final sidePadding = EdgeInsets.symmetric(horizontal: padding);
     return Container(
       padding: EdgeInsets.only(left: size.width / 45),
-      height: size.height / 4,
+      height: size.width / 2,
       child: ListView.builder(
         scrollDirection: Axis.horizontal,
         padding: EdgeInsets.only(left: 16, right: 6),
@@ -29,7 +28,7 @@ class HomeBanners extends StatelessWidget {
               Expanded(
                 child: Container(
                   margin: EdgeInsets.only(right: 10),
-                  width: size.width / 1.3,
+                  width: size.width / 1.5,
                   decoration: BoxDecoration(
                     image: DecorationImage(
                       image: AssetImage(
@@ -61,18 +60,22 @@ class HomeBanners extends StatelessWidget {
                       style: themeData.textTheme.bodyText2),
                   addVerticalSpace(size.height / 150),
                   Row(
+                    crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       Container(
-                          padding: EdgeInsets.symmetric(
-                              horizontal: size.width / 50,
-                              vertical: size.width / 200),
                           decoration: BoxDecoration(
                             color: COLOR_YELLOW,
                             borderRadius: BorderRadius.circular(5),
                           ),
-                          child: Text('4.5',
-                              style: customText(Colors.white, FontWeight.bold,
-                                  size.width / 33))),
+                          child: Padding(
+                            padding: EdgeInsets.symmetric(
+                                horizontal: size.width / 45,
+                                vertical: size.width / 200),
+                            child: Text('4.5',
+                                textAlign: TextAlign.center,
+                                style: customText(Colors.white, FontWeight.bold,
+                                    size.width / 33)),
+                          )),
                       addHorizontalSpace(size.height / 100),
                       Text('25min',
                           style: customText(

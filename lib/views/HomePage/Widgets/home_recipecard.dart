@@ -9,17 +9,17 @@ class RecipeCard extends StatelessWidget {
   Widget build(BuildContext context) {
     final Size size = MediaQuery.of(context).size;
     final ThemeData themeData = Theme.of(context);
-    double padding = 25;
+    double padding = size.width / 15;
     final sidePadding = EdgeInsets.symmetric(horizontal: padding);
     return Container(
-      height: size.height / 2,
+      height: size.width / 1,
       padding: EdgeInsets.symmetric(
           horizontal: size.width / 20, vertical: size.width / 20),
       child: GridView.count(
         // Create a grid with 2 columns. If you change the scrollDirection to
         // horizontal, this produces 2 rows.
         crossAxisCount: 2,
-        crossAxisSpacing: size.width / 30,
+        crossAxisSpacing: size.width / 50,
         mainAxisSpacing: size.width / 25,
         // Generate 100 widgets that display their index in the List.
         children: List.generate(10, (index) {
@@ -30,7 +30,7 @@ class RecipeCard extends StatelessWidget {
                 Expanded(
                   child: Stack(children: [
                     Container(
-                      height: size.height / 1,
+                      height: size.width / 1,
                       width: size.width / 1,
                       decoration: BoxDecoration(
                         image: DecorationImage(
@@ -57,18 +57,20 @@ class RecipeCard extends StatelessWidget {
                       bottom: 7,
                       right: 7,
                       child: Container(
-                        width: size.width / 8,
-                        height: size.height / 42,
+                        width: size.width / 9,
+                        height: size.width / 28,
                         decoration: BoxDecoration(
                           color: Colors.yellow[500],
                           borderRadius: BorderRadius.circular(5),
                         ),
                         child: Center(
                           child: RichText(
+                            textAlign: TextAlign.start,
                             text: TextSpan(
                               children: [
                                 WidgetSpan(
-                                  child: Icon(Icons.star, size: 14),
+                                  child:
+                                      Icon(Icons.star, size: size.width / 29),
                                 ),
                                 TextSpan(
                                     text: " 4.5",
